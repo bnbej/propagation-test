@@ -1,0 +1,15 @@
+{
+    "systemName": "SAP S/4HANA DEV System",
+    "communicationArrangement": {
+        "communicationArrangementName": "MY_CUSTOM_RAP_ARRANGEMENT",
+        "scenarioId": "ZJWTEST_KNA1",
+        "inboundAuthentication": "BasicAuthentication",
+        "communicationSystem": {
+            "communicationSystemHostname": "default.com",
+            "outboundCommunicationUser": {
+                "username": "DefaultUser",
+                "password": "DefaultPassword"
+            }
+        }
+    }
+}

@@ -1,0 +1,11 @@
+### Test OAuth Client Credentials
+@clientId = CAP_BTP_USER_TEST
+@clientSecret = y/D[=5g7s=7gcrYvQkHD(z9Ff[~UoWb])7Sz8wt]%
+@tokenUrl = https://my434544-api.s4hana.cloud.sap/sap/bc/sec/oauth2/token
+
+### Test OAuth Client Credentials
+POST {{tokenUrl}}
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic {{clientId}}:{{clientSecret}}
+
+grant_type=client_credentials

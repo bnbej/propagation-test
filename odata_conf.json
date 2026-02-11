@@ -1,0 +1,30 @@
+{
+    "S4HANA_KNA1": {
+        "kind": "odata",
+        "model": "srv/external/S4HANA_KNA1",
+        "credentials": {
+            "path": "/sap/opu/odata4/sap/zjwtest_kna1/srvd_a2x/sap/zjwtest_kna1/0001",
+            "destination": "BNB_S4H_DEV"
+        }
+    },
+        "MY_RAP_SERVICE": {
+        "kind": "odata-v4",
+        "model": "srv/external/MY_RAP_SERVICE",
+        "[production]": {
+            "credentials": {
+            "destination": "custom-rap-api-access",
+            "path": "/sap/opu/odata4/sap/zjwtest_kna1/srvd_a2x/sap/zjwtest_kna1/0001/"
+            }
+        }
+    },
+        "S4HANA_KNA1_MANUAL": {
+        "kind": "odata-v4",
+        "model": "srv/external/S4HANA_KNA1_MANUAL",
+        "credentials": {
+            "url": "https://my434544-api.s4hana.cloud.sap/sap/opu/odata4/sap/zjwtest_kna1/srvd_a2x/sap/zjwtest_kna1/0001/",
+            "authentication": "BasicAuthentication",
+            "username": "BNB_CAP_USER_EJ",
+            "password": "]mQ$XR8dEP%6@8Ykc%/C#l5](XELHwVco38DtR<Q"
+        }
+    }
+}
