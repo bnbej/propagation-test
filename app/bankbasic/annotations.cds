@@ -39,11 +39,6 @@ annotate service.BankBasic with @(
         },
     ],
     UI.LineItem : [
-        // {
-        //     $Type : 'UI.DataFieldForAction',
-        //     Action : 'PropagationService.CreateDocument', // 서비스이름.액션이름
-        //     Label : '전표 생성 bound' // 화면에 보여질 버튼 텍스트
-        // },
         {
             $Type : 'UI.DataFieldForAction',
             Action : 'PropagationService.SendToBank',

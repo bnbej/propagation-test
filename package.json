@@ -22,7 +22,9 @@
     "watch-customers": "cds watch --open customers/index.html?sap-ui-xx-viewCache=false --livereload false",
     "undeploy": "cf undeploy propagation-test --delete-services --delete-service-keys --delete-service-brokers",
     "build": "rimraf resources mta_archives && mbt build --mtar archive",
-    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+    "watch-customers-basic-auth": "cds watch --open customersbasicauth/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-bankbasic": "cds watch --open bankbasic/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "private": true,
   "cds": {
@@ -39,14 +41,30 @@
       "connectivity": true,
       "destinations": true,
       "html5-repo": true,
+
       "S4HANA_KNA1": {
-          "kind": "odata-v4",
-          "model": "srv/external/S4HANA_KNA1",
-          "credentials": {
-              "path": "/sap/opu/odata4/sap/zjwtest_kna1/srvd_a2x/sap/zjwtest_kna1/0001",
-              "destination": "BNB_S4H_OAUTH_SAML"
-          },
-          "csrf": true
+        "kind": "odata-v4",
+        "model": "srv/external/S4HANA_KNA1",
+        "credentials": {
+          "path": "/sap/opu/odata4/sap/zjwtest_kna1/srvd_a2x/sap/zjwtest_kna1/0001",
+          "destination": "BNB_S4HC_BASIC"
+        },
+        "csrf": true
+      },
+      "S4HANA_BANKBASIC": {
+        "kind": "odata-v4",
+        "model": "srv/external/S4HANA_BANKBASIC",
+        "credentials": {
+          "destination": "BNB_S4HC_BASIC",
+          "path": "/sap/opu/odata4/sap/zjwtest_hbkid_f4/srvd_a2x/sap/zjwtest_hbkid_f4/0001"
+        },
+        "csrf": true
+      },
+      "BNB_COMM_API": {
+        "kind": "rest",
+        "credentials": {
+          "destination": "BNB_COMM_API"
+        }
       }
     }
   },
@@ -54,6 +72,8 @@
     "app/*"
   ],
   "sapux": [
-    "app/customers"
+    "app/customers",
+    "app/customers-basic-auth",
+    "app/bankbasic"
   ]
 }
