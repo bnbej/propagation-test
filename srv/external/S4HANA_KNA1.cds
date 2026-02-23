@@ -1,4 +1,4 @@
-/* checksum : 65b992d449416b966cd99adb0dbdffeb */
+/* checksum : 8838d0cf0550f0f451470de892fde62c */
 @cds.external : true
 @Common.ApplyMultiUnitBehaviorForSortingAndFiltering : true
 @Capabilities.FilterFunctions : [
@@ -41,14 +41,27 @@
 @Capabilities.AsynchronousRequestsSupported : true
 service S4HANA_KNA1 {
   @cds.external : true
+  type SAP__Message {
+    code : String not null;
+    message : String not null;
+    target : String;
+    additionalTargets : many String not null;
+    transition : Boolean not null;
+    @odata.Type : 'Edm.Byte'
+    numericSeverity : Integer not null;
+    longtextUrl : String;
+  };
+
+  @cds.external : true
   @cds.persistence.skip : true
   @Common.Label : 'i_customer'
+  @Common.Messages : SAP__Messages
   @Capabilities.SearchRestrictions.Searchable : false
-  @Capabilities.InsertRestrictions.Insertable : false
-  @Capabilities.DeleteRestrictions.Deletable : false
-  @Capabilities.UpdateRestrictions.Updatable : false
+  @Capabilities.UpdateRestrictions.DeltaUpdateSupported : true
   @Capabilities.UpdateRestrictions.QueryOptions.SelectSupported : true
+  @Capabilities.DeepUpdateSupport.ContentIDSupported : true
   entity zjwtest_kna1 {
+    @Core.Computed : true
     @Common.IsUpperCase : true
     @Common.Label : 'Customer'
     @Common.QuickInfo : 'Customer Number'
@@ -578,6 +591,8 @@ service S4HANA_KNA1 {
     @Common.Label : 'ICMS Taxpayer'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=J_1BICMSTAXPAY'
     BR_ICMSTaxPayerType : String(2) not null;
+    buser : String(12) not null;
+    SAP__Messages : many SAP__Message not null;
   };
 };
 
