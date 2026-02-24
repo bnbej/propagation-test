@@ -4,8 +4,9 @@ const { retrieveJwt, getDestination } = require('@sap-cloud-sdk/connectivity');
 
 module.exports = cds.service.impl(async function (srv) {
 
+    const S4HANA_KNA1 = await cds.connect.to('S4HANA_KNA1');
+
     srv.on('READ', 'Customer', async req => {
-        const S4HANA_KNA1 = await cds.connect.to('S4HANA_KNA1');
         const kna1 = await S4HANA_KNA1.run(SELECT.from('S4HANA_KNA1.zjwtest_kna1'));
         // console.log('customers', kna1);
         return kna1;
@@ -19,6 +20,13 @@ module.exports = cds.service.impl(async function (srv) {
     });
 
 
+
+    /**
+     * !!!!! 사용할 수 없는 API !!!!!
+     * HTTP Service(RAP)로 생성한 API는 BASIC 인증만 가능한 경우가 있음
+     * 해당 서비스도 그러한 것으로 사료됨
+     * ODATA action(RAP)으로 만들어서 사용해야 함 
+     */
     this.on('CreateDocument', async (req) => {
         const jwt = retrieveJwt(req.http.req);
 
@@ -120,7 +128,7 @@ module.exports = cds.service.impl(async function (srv) {
 
     /**
      * 통신 서버에서 요청하는 API
-     */
+     */    
     this.on('BankResult', async (req) => {
         const { TYPE, DATA } = req.data;
 
@@ -142,5 +150,14 @@ module.exports = cds.service.impl(async function (srv) {
         }
     });
 
+
+
+    this.on('getRapOdataAction', async (req) => {
+        const { kunnr, text } = req.data;
+        const odataActionPath = `/zjwtest_kna1('${kunnr}')/com.sap.gateway.srvd_a2x.zjwtest_kna1.v0001.test`;
+        const payload = { text: text };
+        const response = await S4HANA_KNA1.send('POST', odataActionPath, payload);
+        return response.MSG;
+    });
 
 });

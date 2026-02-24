@@ -1,0 +1,13 @@
+### 1. CAP 서버가 정상적으로 떠 있는지 확인 (메타데이터 조회)
+GET http://localhost:4004/odata/v4/propagation/$metadata
+Accept: application/json
+
+
+### 2. S/4HANA로 Hello World 액션 전송 테스트
+POST http://localhost:4004/odata/v4/propagation/getRapOdataAction
+Content-Type: application/json
+
+{
+  "kunnr": "100000", 
+  "text": "BTP CAP에서 S/4HANA로 보내는 테스트 메시지~~~"
+}

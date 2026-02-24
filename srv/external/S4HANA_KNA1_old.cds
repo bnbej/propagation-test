@@ -1,4 +1,4 @@
-/* checksum : b25b91841c74a83a8175358a3fa0b9a6 */
+/* checksum : 8838d0cf0550f0f451470de892fde62c */
 @cds.external : true
 @Common.ApplyMultiUnitBehaviorForSortingAndFiltering : true
 @Capabilities.FilterFunctions : [
@@ -41,11 +41,6 @@
 @Capabilities.AsynchronousRequestsSupported : true
 service S4HANA_KNA1 {
   @cds.external : true
-  type ZTEST_MSG {
-    MSG : String(50) not null;
-  };
-
-  @cds.external : true
   type SAP__Message {
     code : String not null;
     message : String not null;
@@ -68,516 +63,528 @@ service S4HANA_KNA1 {
   entity zjwtest_kna1 {
     @Core.Computed : true
     @Common.IsUpperCase : true
-    @Common.Label : '고객'
-    @Common.QuickInfo : '고객 번호'
+    @Common.Label : 'Customer'
+    @Common.QuickInfo : 'Customer Number'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=KUNNR'
     key kunnr : String(10) not null;
-    @Common.Label : '고객 이름'
-    @Common.Heading : '고객'
+    @Common.Label : 'Name of Customer'
+    @Common.Heading : 'Customer'
     name1 : String(80) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '고객 이름'
-    @Common.QuickInfo : '고객 성명'
+    @Common.Label : 'Customer Name'
+    @Common.QuickInfo : 'Customer Full Name'
     CustomerFullName : String(220) not null;
-    @Common.Label : '고객 이름'
-    @Common.Heading : '고객'
+    @Common.Label : 'Name of Customer'
+    @Common.Heading : 'Customer'
+    @Common.QuickInfo : 'Customer Name'
     BPCustomerName : String(81) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '고객 이름'
-    @Common.QuickInfo : '고객 성명'
+    @Common.Label : 'Customer Name'
+    @Common.QuickInfo : 'Customer Full Name'
     BPCustomerFullName : String(220) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '생성자'
-    @Common.QuickInfo : '오브젝트 생성자 이름'
+    @Common.Label : 'Created by'
+    @Common.QuickInfo : 'Name of Person who Created the Object'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=ERNAM_RF'
     CreatedByUser : String(12) not null;
-    @Common.Label : '생성일'
-    @Common.Heading : '일자'
-    @Common.QuickInfo : '레코드 생성일'
+    @Common.Label : 'Created On'
+    @Common.Heading : 'Date'
+    @Common.QuickInfo : 'Record Created On'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=ERDAT_RF'
     CreationDate : Date;
     @Common.IsUpperCase : true
-    @Common.Label : '주소'
+    @Common.Label : 'Address'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=ADRNR'
     AddressID : String(10) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '고객 분류'
+    @Common.Label : 'Customer Classific.'
     @Common.Heading : 'Cl'
+    @Common.QuickInfo : 'Customer Classification'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=KUKLA'
     CustomerClassification : String(2) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '사업자등록번호'
+    @Common.Label : 'VAT Registration No.'
+    @Common.QuickInfo : 'VAT Registration Number'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=STCEG'
     VATRegistration : String(20) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '계정 그룹'
-    @Common.Heading : '그룹'
-    @Common.QuickInfo : '고객 계정 그룹'
+    @Common.Label : 'Account Group'
+    @Common.Heading : 'Group'
+    @Common.QuickInfo : 'Customer Account Group'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=KTOKD'
     CustomerAccountGroup : String(4) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '권한'
+    @Common.Label : 'Authorization'
     @Common.Heading : 'AuGr'
-    @Common.QuickInfo : '권한 그룹'
+    @Common.QuickInfo : 'Authorization Group'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=BRGRU'
     AuthorizationGroup : String(4) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '납품보류'
+    @Common.Label : 'Delivery block'
     @Common.Heading : 'DlvBl'
-    @Common.QuickInfo : '고객의 중앙납품보류'
+    @Common.QuickInfo : 'Central delivery block for the customer'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=LIFSD_X'
     DeliveryIsBlocked : String(2) not null;
-    @Common.Label : '전기 보류'
+    @Common.Label : 'Posting Block'
     @Common.Heading : 'B'
-    @Common.QuickInfo : '중앙 전기 보류'
+    @Common.QuickInfo : 'Central Posting Block'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=SPERB_X'
     PostingIsBlocked : Boolean not null;
     @Common.IsUpperCase : true
-    @Common.Label : '대금청구 보류'
-    @Common.Heading : '보류'
-    @Common.QuickInfo : '고객에 대한 중앙 청구 보류'
+    @Common.Label : 'Billing Block'
+    @Common.Heading : 'BlBlk'
+    @Common.QuickInfo : 'Central billing block for customer'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=FAKSD_X'
     BillingIsBlockedForCustomer : String(2) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '오더 보류'
+    @Common.Label : 'Order Block'
     @Common.Heading : 'OrBlk'
-    @Common.QuickInfo : '고객에 대한 중앙 오더 보류'
+    @Common.QuickInfo : 'Central order block for customer'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=AUFSD_X'
     OrderIsBlockedForCustomer : String(2) not null;
     @Common.IsDigitSequence : true
-    @Common.Label : '국제 위치 번호 1'
+    @Common.Label : 'Int. location no. 1'
     @Common.Heading : 'ILN 1'
-    @Common.QuickInfo : '국제 위치 번호(부분 1)'
+    @Common.QuickInfo : 'International location number  (part 1)'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=BBBNR'
     InternationalLocationNumber1 : String(7) not null;
-    @Common.Label : '일회성 계정'
-    @Common.QuickInfo : '지시자: 일회성계정입니까?'
+    @Common.Label : 'One-Time Account'
+    @Common.QuickInfo : 'Indicator: Is the Account a One-Time Account?'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=XCPDK'
     IsOneTimeAccount : Boolean not null;
     @Common.IsUpperCase : true
-    @Common.Label : '조세 관할 구역'
+    @Common.Label : 'Tax Jurisdiction'
+    @Common.Heading : 'Tax Jur.'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=TXJCD'
     TaxJurisdiction : String(15) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '산업'
-    @Common.QuickInfo : '산업 키'
+    @Common.Label : 'Industry'
+    @Common.Heading : 'Indust.'
+    @Common.QuickInfo : 'Industry Key'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=BRSCH'
     Industry : String(4) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '세금 번호 유형'
+    @Common.Label : 'Tax Number Type'
     @Common.Heading : 'Tax no.ty.'
-    @Common.QuickInfo : '세금번호유형'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=J_1ATOID'
     TaxNumberType : String(2) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '세금 번호 1'
+    @Common.Label : 'Tax Number 1'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=STCD1'
     TaxNumber1 : String(16) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '세금 번호 2'
+    @Common.Label : 'Tax Number 2'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=STCD2'
     TaxNumber2 : String(11) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '세금 번호 3'
+    @Common.Label : 'Tax Number 3'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=STCD3'
     TaxNumber3 : String(18) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '세금 번호 4'
+    @Common.Label : 'Tax Number 4'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=STCD4'
     TaxNumber4 : String(18) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '세금 번호 5'
+    @Common.Label : 'Tax Number 5'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=STCD5'
     TaxNumber5 : String(60) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '세금 번호 6'
+    @Common.Label : 'Tax Number 6'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=STCD6'
     TaxNumber6 : String(20) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '그룹 키'
-    @Common.Heading : '그룹'
+    @Common.Label : 'Group Key'
+    @Common.Heading : 'Group'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=KONZS'
     CustomerCorporateGroup : String(10) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '공급업체'
-    @Common.QuickInfo : '공급업체 계정 번호'
+    @Common.Label : 'Supplier'
+    @Common.QuickInfo : 'Account Number of Supplier'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=LIFNR'
     Supplier : String(10) not null;
     @Common.IsUpperCase : true
-    @Common.Label : 'Nielsen 지시자'
+    @Common.Label : 'Nielsen Indicator'
     @Common.Heading : 'NS'
-    @Common.QuickInfo : '닐슨 ID'
+    @Common.QuickInfo : 'Nielsen ID'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=NIELS'
     NielsenRegion : String(2) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '산업 코드 1'
-    @Common.Heading : '산업코드 1'
+    @Common.Label : 'Industry Code 1'
+    @Common.Heading : 'Ind.Code 1'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=BRAN1_D'
     IndustryCode1 : String(10) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '산업 코드 2'
-    @Common.Heading : '산업코드 2'
+    @Common.Label : 'Industry Code 2'
+    @Common.Heading : 'Ind.code 2'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=BRAN2'
     IndustryCode2 : String(10) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '산업 코드 3'
-    @Common.Heading : '산업코드 3'
+    @Common.Label : 'Industry Code 3'
+    @Common.Heading : 'Ind.code 3'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=BRAN3'
     IndustryCode3 : String(10) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '산업 코드 4'
-    @Common.Heading : '산업코드 4'
+    @Common.Label : 'Industry Code 4'
+    @Common.Heading : 'Ind.code 4'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=BRAN4'
     IndustryCode4 : String(10) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '산업 코드 5'
-    @Common.Heading : '산업코드 5'
+    @Common.Label : 'Industry Code 5'
+    @Common.Heading : 'Ind.code 5'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=BRAN5'
     IndustryCode5 : String(10) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '국가/지역 키'
+    @Common.Label : 'Country/Region Key'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=LAND1_GP'
     Country : String(3) not null;
-    @Common.Label : '이름'
+    @Common.Label : 'Name'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=NAME1_GP'
     OrganizationBPName1 : String(35) not null;
-    @Common.Label : '이름 2'
+    @Common.Label : 'Name 2'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=NAME2_GP'
     OrganizationBPName2 : String(35) not null;
-    @Common.Label : '도시'
+    @Common.Label : 'City'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=ORT01_GP'
     CityName : String(35) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '우편번호'
+    @Common.Label : 'Postal Code'
+    @Common.Heading : 'PostalCode'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=PSTLZ'
     PostalCode : String(10) not null;
-    @Common.Label : '도로 주소'
-    @Common.QuickInfo : '도로 주소 및 번지'
+    @Common.Label : 'Street'
+    @Common.QuickInfo : 'Street and House Number'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=STRAS_GP'
     StreetName : String(35) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '검색어'
-    @Common.QuickInfo : '정렬 필드'
+    @Common.Label : 'Search Term'
+    @Common.Heading : 'SearchTerm'
+    @Common.QuickInfo : 'Sort Field'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=SORTL'
     SortField : String(10) not null;
-    @Common.Label : '팩스번호'
+    @Common.Label : 'Fax Number'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=TELFX'
     FaxNumber : String(31) not null;
     @Common.IsUpperCase : true
-    @Common.Label : 'Suframa 코드'
+    @Common.Label : 'Suframa Code'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=J_1BSUFRAMA'
     BR_SUFRAMACode : String(9) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '지역'
+    @Common.Label : 'Region'
     @Common.Heading : 'Rg'
-    @Common.QuickInfo : '지역(시/도, 도, 군/구)'
+    @Common.QuickInfo : 'Region (State, Province, County)'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=REGIO'
     Region : String(3) not null;
-    @Common.Label : '전화번호 1'
-    @Common.QuickInfo : '첫번째 전화번호'
+    @Common.Label : 'Telephone 1'
+    @Common.QuickInfo : 'First telephone number'
     TelephoneNumber1 : String(16) not null;
-    @Common.Label : '전화번호 2'
-    @Common.QuickInfo : '두 번째 전화번호'
+    @Common.Label : 'Telephone 2'
+    @Common.QuickInfo : 'Second telephone number'
     TelephoneNumber2 : String(16) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '대리 지급인'
-    @Common.Heading : '대리지급인'
-    @Common.QuickInfo : '대리 지급인의 계정 번호'
+    @Common.Label : 'Alternative Payer'
+    @Common.Heading : 'Alt. Payer'
+    @Common.QuickInfo : 'Account Number of an Alternative Payer'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=KNRZA'
     AlternativePayerAccount : String(10) not null;
     @Common.IsUpperCase : true
-    @Common.Label : 'DME 수령인 코드'
+    @Common.Label : 'DME Recipient Code'
     @Common.Heading : 'R'
-    @Common.QuickInfo : '데이터 매체 교환에 대한 수령인 코드'
+    @Common.QuickInfo : 'Recipient Code for Data Medium Exchange'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=DTAMS'
     DataMediumExchangeIndicator : String(1) not null;
-    @Common.Label : 'VAT 과세 대상'
+    @Common.Label : 'Liable for VAT'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=STKZU'
     VATLiability : Boolean not null;
     @Common.IsUpperCase : true
-    @Common.Label : '목적 완료됨'
-    @Common.Heading : '비즈니스 목적 완료 플래그'
-    @Common.QuickInfo : '비즈니스 목적 완료 플래그'
+    @Common.Label : 'Purpose Completed'
+    @Common.Heading : 'Business Purpose Completed Flag'
+    @Common.QuickInfo : 'Business Purpose Completed Flag'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=CVP_XBLCK'
     IsBusinessPurposeCompleted : String(1) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '세금유형'
+    @Common.Label : 'Tax Type'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=J_1AFITP_D'
     ResponsibleType : String(2) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '회계주소'
-    @Common.QuickInfo : '회계주소가 있는 마스터레코드 계정번호'
+    @Common.Label : 'Fiscal address'
+    @Common.Heading : 'Fisc.addr.'
+    @Common.QuickInfo : 'Account number of the master record with the fiscal address'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=FISKN_D'
     FiscalAddress : String(10) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '자연인'
+    @Common.Label : 'Natural Person'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=STKZN'
     NFPartnerIsNaturalPerson : String(1) not null;
-    @Common.Label : '삭제 플래그'
+    @Common.Label : 'Deletion Flag'
     @Common.Heading : 'DelF'
-    @Common.QuickInfo : '마스터 레코드에 대한 중앙 삭제 플래그'
+    @Common.QuickInfo : 'Central Deletion Flag for Master Record'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=LOEVM_X'
     DeletionIndicator : Boolean not null;
-    @Common.Label : '언어 키'
-    @Common.Heading : '언어'
+    @Common.Label : 'Language Key'
+    @Common.Heading : 'Language'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=SPRAS'
     Language : String(2) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '관계사 번호'
-    @Common.Heading : '관계사'
-    @Common.QuickInfo : '관계사의 회사 ID'
+    @Common.Label : 'Trading Partner No.'
+    @Common.Heading : 'Tr.Prt'
+    @Common.QuickInfo : 'Company ID of Trading Partner'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=RASSC'
     TradingPartner : String(6) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '납품일 규칙'
-    @Common.Heading : '납품일규칙'
+    @Common.Label : 'Deliv Date Rule'
+    @Common.Heading : 'DlvDteRule'
+    @Common.QuickInfo : 'Delivery Date Rule'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=SD_DELIVERY_DATE_TYPE_RULE'
     DeliveryDateTypeRule : String(1) not null;
-    @Common.Label : '고속버스터미널'
-    @Common.QuickInfo : '급행 열차역'
+    @Common.Label : 'Express station'
+    @Common.QuickInfo : 'Express train station'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=BAHNE'
     ExpressTrainStationName : String(25) not null;
-    @Common.Label : '기차역'
+    @Common.Label : 'Train station'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=BAHNS'
     TrainStationName : String(25) not null;
     @Common.IsDigitSequence : true
-    @Common.Label : '국제 위치 번호 2'
+    @Common.Label : 'Int. location no. 2'
     @Common.Heading : 'ILN 2'
-    @Common.QuickInfo : '국제 위치 번호(부분 2)'
+    @Common.QuickInfo : 'International location number (Part 2)'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=BBSNR'
     InternationalLocationNumber2 : String(5) not null;
     @Common.IsDigitSequence : true
-    @Common.Label : '점검 숫자'
-    @Common.QuickInfo : '국제 위치 번호에 대한 점검 숫자'
+    @Common.Label : 'Check digit'
+    @Common.QuickInfo : 'Check digit for the international location number'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=BUBKZ'
     InternationalLocationNumber3 : String(1) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '도시 코드'
-    @Common.Heading : '코드'
+    @Common.Label : 'City Code'
+    @Common.Heading : 'Code'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=CITYC'
     CityCode : String(4) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '군/구 코드'
+    @Common.Label : 'County Code'
     @Common.Heading : 'CCd'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=COUNC'
     County : String(3) not null;
-    @Common.Label : '하적 지점'
+    @Common.Label : 'Unloading points'
     @Common.Heading : 'UnlPt'
-    @Common.QuickInfo : '지시자: 하적 지점이 있음'
+    @Common.QuickInfo : 'Indicator: Unloading points exist'
     CustomerHasUnloadingPoint : Boolean not null;
     @Common.IsUpperCase : true
-    @Common.Label : '근무 시간'
-    @Common.Heading : '근무 시간 달력'
-    @Common.QuickInfo : '근무 시간 달력'
+    @Common.Label : 'Working times'
+    @Common.Heading : 'Working time calendar'
+    @Common.QuickInfo : 'Working Time Calendar'
     CustomerWorkingTimeCalendar : String(2) not null;
-    @Common.Label : '경쟁사'
+    @Common.Label : 'Competitors'
     @Common.Heading : 'C'
-    @Common.QuickInfo : '지시자: 경쟁사'
+    @Common.QuickInfo : 'Indicator: Competitor'
     IsCompetitor : Boolean not null;
-    @Common.Label : '대표 이름'
+    @Common.Label : 'Rep''s Name'
+    @Common.Heading : 'Name of Representative'
+    @Common.QuickInfo : 'Name of Representative'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=REPRES'
     TaxInvoiceRepresentativeName : String(10) not null;
-    @Common.Label : '종목'
+    @Common.Label : 'Type of Business'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=GESTYP'
     BusinessType : String(30) not null;
-    @Common.Label : '업태'
+    @Common.Label : 'Type of Industry'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=INDTYP'
     IndustryType : String(30) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '연결 송장 처리'
-    @Common.Heading : '연결 송장 처리(중국 대만)'
-    @Common.QuickInfo : '연결 송장 처리(중국 대만)'
+    @Common.Label : 'Consolidated Invoic.'
+    @Common.Heading : 'Consolidated Invoicing for Taiwan'
+    @Common.QuickInfo : 'Consolidated Invoicing for Taiwan'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=TWGUI_CONSOLIDATE_INVOICE'
     TW_CollvBillingIsSupported : String(1) not null;
-    @Common.Label : '전표의 대체지급인'
-    @Common.QuickInfo : '지시자: 전표에서 허용된 대체지급인입니까?'
+    @Common.Label : 'Alt.payer in doc?'
+    @Common.QuickInfo : 'Indicator: Is an alternative payer allowed in document?'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=XREGU'
     AlternativePayeeIsAllowed : Boolean not null;
     @Common.IsUpperCase : true
-    @Common.Label : '특성 1'
+    @Common.Label : 'Attribute 1'
     @Common.Heading : 'A1'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=KATR1'
     FreeDefinedAttribute01 : String(2) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '특성 2'
+    @Common.Label : 'Attribute 2'
     @Common.Heading : 'A2'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=KATR2'
     FreeDefinedAttribute02 : String(2) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '특성 3'
+    @Common.Label : 'Attribute 3'
     @Common.Heading : 'A3'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=KATR3'
     FreeDefinedAttribute03 : String(2) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '속성 4'
+    @Common.Label : 'Attribute 4'
     @Common.Heading : 'A4'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=KATR4'
     FreeDefinedAttribute04 : String(2) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '속성 5'
+    @Common.Label : 'Attribute 5'
     @Common.Heading : 'A5'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=KATR5'
     FreeDefinedAttribute05 : String(2) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '속성 6'
+    @Common.Label : 'Attribute 6'
     @Common.Heading : 'A6'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=KATR6'
     FreeDefinedAttribute06 : String(3) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '속성 7'
+    @Common.Label : 'Attribute 7'
     @Common.Heading : 'A7'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=KATR7'
     FreeDefinedAttribute07 : String(3) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '속성 8'
+    @Common.Label : 'Attribute 8'
     @Common.Heading : 'A8'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=KATR8'
     FreeDefinedAttribute08 : String(3) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '속성 9'
+    @Common.Label : 'Attribute 9'
     @Common.Heading : 'A9'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=KATR9'
     FreeDefinedAttribute09 : String(3) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '속성 10'
+    @Common.Label : 'Attribute 10'
     @Common.Heading : 'A10'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=KATR10'
     FreeDefinedAttribute10 : String(3) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '지급 사유'
+    @Common.Label : 'Payment Reason'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=FARP_PAYT_RSN'
     PaymentReason : String(4) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '조건 그룹 1'
+    @Common.Label : 'Condition Group 1'
     @Common.Heading : 'CGr1'
-    @Common.QuickInfo : '고객 조건 그룹 1'
+    @Common.QuickInfo : 'Customer Condition Group 1'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=KDKG1'
     CustomerConditionGroup1 : String(2) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '조건 그룹 2'
+    @Common.Label : 'Condition Group 2'
     @Common.Heading : 'CGr2'
-    @Common.QuickInfo : '고객 조건 그룹 2'
+    @Common.QuickInfo : 'Customer Condition Group 2'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=KDKG2'
     CustomerConditionGroup2 : String(2) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '조건 그룹 3'
+    @Common.Label : 'Condition Group 3'
     @Common.Heading : 'CGr3'
-    @Common.QuickInfo : '고객조건그룹 3'
+    @Common.QuickInfo : 'Customer Condition Group 3'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=KDKG3'
     CustomerConditionGroup3 : String(2) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '조건 그룹 4'
+    @Common.Label : 'Condition Group 4'
     @Common.Heading : 'CGr4'
-    @Common.QuickInfo : '고객조건그룹 4'
+    @Common.QuickInfo : 'Customer Condition Group 4'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=KDKG4'
     CustomerConditionGroup4 : String(2) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '조건 그룹 5'
+    @Common.Label : 'Condition Group 5'
     @Common.Heading : 'CGr5'
-    @Common.QuickInfo : '고객조건그룹 5'
+    @Common.QuickInfo : 'Customer Condition Group 5'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=KDKG5'
     CustomerConditionGroup5 : String(2) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '잠재 고객'
+    @Common.Label : 'Prospect'
     @Common.Heading : 'I'
-    @Common.QuickInfo : '지시자: 가망 고객'
+    @Common.QuickInfo : 'Indicator: Sales prospect'
     IsSalesProspect : String(1) not null;
-    @Common.Label : '지급 보류'
+    @Common.Label : 'Payment block'
+    @Common.QuickInfo : 'Payment Block'
     PaymentIsBlockedForCustomer : Boolean not null;
-    @Common.Label : '소비자'
-    @Common.QuickInfo : '지시자: 소비자'
+    @Common.Label : 'Consumer'
+    @Common.QuickInfo : 'Indicator: Consumer'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=DEAR6'
     IsConsumer : Boolean not null;
     @Common.IsUpperCase : true
-    @Common.Label : 'DC 설정'
-    @Common.Heading : '데이터 관리자 설정 플래그'
-    @Common.QuickInfo : 'BP: 데이터 관리자 설정 플래그'
+    @Common.Label : 'Data Ctrlr. Set'
+    @Common.Heading : 'Data Controller Set Flag'
+    @Common.QuickInfo : 'BP: Data Controller Set Flag'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=BU_XDCSET'
     DataControllerSet : String(1) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '데이터 관리자'
-    @Common.QuickInfo : 'BP: 데이터 관리자(내부 전용)'
+    @Common.Label : 'Data Controller'
+    @Common.QuickInfo : 'BP: Data Controller (Internal Use Only)'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=BU_DATA_CONTROLLER'
     DataController1 : String(30) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '데이터 관리자'
-    @Common.QuickInfo : 'BP: 데이터 관리자(내부 전용)'
+    @Common.Label : 'Data Controller'
+    @Common.QuickInfo : 'BP: Data Controller (Internal Use Only)'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=BU_DATA_CONTROLLER'
     DataController2 : String(30) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '데이터 관리자'
-    @Common.QuickInfo : 'BP: 데이터 관리자(내부 전용)'
+    @Common.Label : 'Data Controller'
+    @Common.QuickInfo : 'BP: Data Controller (Internal Use Only)'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=BU_DATA_CONTROLLER'
     DataController3 : String(30) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '데이터 관리자'
-    @Common.QuickInfo : 'BP: 데이터 관리자(내부 전용)'
+    @Common.Label : 'Data Controller'
+    @Common.QuickInfo : 'BP: Data Controller (Internal Use Only)'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=BU_DATA_CONTROLLER'
     DataController4 : String(30) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '데이터 관리자'
-    @Common.QuickInfo : 'BP: 데이터 관리자(내부 전용)'
+    @Common.Label : 'Data Controller'
+    @Common.QuickInfo : 'BP: Data Controller (Internal Use Only)'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=BU_DATA_CONTROLLER'
     DataController5 : String(30) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '데이터 관리자'
-    @Common.QuickInfo : 'BP: 데이터 관리자(내부 전용)'
+    @Common.Label : 'Data Controller'
+    @Common.QuickInfo : 'BP: Data Controller (Internal Use Only)'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=BU_DATA_CONTROLLER'
     DataController6 : String(30) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '데이터 관리자'
-    @Common.QuickInfo : 'BP: 데이터 관리자(내부 전용)'
+    @Common.Label : 'Data Controller'
+    @Common.QuickInfo : 'BP: Data Controller (Internal Use Only)'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=BU_DATA_CONTROLLER'
     DataController7 : String(30) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '데이터 관리자'
-    @Common.QuickInfo : 'BP: 데이터 관리자(내부 전용)'
+    @Common.Label : 'Data Controller'
+    @Common.QuickInfo : 'BP: Data Controller (Internal Use Only)'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=BU_DATA_CONTROLLER'
     DataController8 : String(30) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '데이터 관리자'
-    @Common.QuickInfo : 'BP: 데이터 관리자(내부 전용)'
+    @Common.Label : 'Data Controller'
+    @Common.QuickInfo : 'BP: Data Controller (Internal Use Only)'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=BU_DATA_CONTROLLER'
     DataController9 : String(30) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '데이터 관리자'
-    @Common.QuickInfo : 'BP: 데이터 관리자(내부 전용)'
+    @Common.Label : 'Data Controller'
+    @Common.QuickInfo : 'BP: Data Controller (Internal Use Only)'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=BU_DATA_CONTROLLER'
     DataController10 : String(30) not null;
-    @Common.Label : '이름'
-    @Common.QuickInfo : '이름 1'
+    @Common.Label : 'Name'
+    @Common.QuickInfo : 'Name 1'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=AD_NAME1'
     BusinessPartnerName1 : String(40) not null;
-    @Common.Label : '이름 2'
+    @Common.Label : 'Name 2'
     BusinessPartnerName2 : String(40) not null;
-    @Common.Label : '이름 3'
+    @Common.Label : 'Name 3'
     BusinessPartnerName3 : String(40) not null;
-    @Common.Label : '이름 4'
+    @Common.Label : 'Name 4'
     BusinessPartnerName4 : String(40) not null;
-    @Common.Label : '도시'
+    @Common.Label : 'City'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=AD_CITY1'
     BPAddrCityName : String(40) not null;
-    @Common.Label : '도로 주소'
+    @Common.Label : 'Street'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=AD_STREET'
     BPAddrStreetName : String(60) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '검색어 1'
+    @Common.Label : 'Search Term 1'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=AD_SORT1'
     AddressSearchTerm1 : String(20) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '검색어 2'
+    @Common.Label : 'Search Term 2'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=AD_SORT2'
     AddressSearchTerm2 : String(20) not null;
-    @Common.Label : '구역'
+    @Common.Label : 'District'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=AD_CITY2'
     DistrictName : String(40) not null;
-    @Common.Label : '사서함 시'
-    @Common.QuickInfo : '사서함 도시'
+    @Common.Label : 'PO Box City'
+    @Common.QuickInfo : 'PO Box city'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=AD_POBXLOC'
     POBoxDeviatingCityName : String(40) not null;
     @Common.IsUpperCase : true
-    @Common.Label : '호칭 키'
-    @Common.Heading : '키'
+    @Common.Label : 'Title Key'
+    @Common.Heading : 'Key'
+    @Common.QuickInfo : 'Form-of-Address Key'
     @Common.DocumentationRef : 'urn:sap-com:documentation:key?=type=DE&id=AD_TITLE'
     BusinessPartnerFormOfAddress : String(4) not null;
     @Common.IsUpperCase : true
@@ -586,13 +593,6 @@ service S4HANA_KNA1 {
     BR_ICMSTaxPayerType : String(2) not null;
     buser : String(12) not null;
     SAP__Messages : many SAP__Message not null;
-  } actions {
-    action test(
-      text : String(255) not null
-    ) returns ZTEST_MSG not null;
-    action test2(
-      text : String(255) not null
-    ) returns ZTEST_MSG not null;
   };
 };
 

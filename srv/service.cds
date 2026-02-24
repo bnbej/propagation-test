@@ -19,4 +19,7 @@ service PropagationService {
         TYPE    : String,     // 요청 유형
         DATA    : String     // 은행에서 온 전문 데이터
     ) returns { resultCd: String; resultMsg: String; };
+
+
+    action getRapOdataAction(kunnr: String, text: String) returns String;
 }

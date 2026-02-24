@@ -122,6 +122,13 @@
                       "enabled": true,
                       "requiresSelection": false,
                       "text": "전표생성"
+                    },
+                    "RapApiController": {
+                      "press": "bankbasic.ext.controller.RapApiController.onTestRapAction",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Rap Action"
                     }
                   }
                 }
