@@ -1,0 +1,10 @@
+### 1. CAP 서버가 정상적으로 떠 있는지 확인 (메타데이터 조회)
+GET http://localhost:4004/odata/v4/propagation/$metadata
+Accept: application/json
+
+
+### 2. S/4HANA로 Hello World 액션 전송 테스트
+POST http://localhost:4004/odata/v4/propagation/sccTest
+Content-Type: application/json
+
+{}

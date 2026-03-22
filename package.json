@@ -65,6 +65,12 @@
         "credentials": {
           "destination": "BNB_COMM_API"
         }
+      },
+      "BNB_SCC_TEST": {
+        "kind": "rest",
+        "credentials": {
+          "destination": "BNB_SCC_TEST"
+        }
       }
     }
   },

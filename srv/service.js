@@ -125,6 +125,85 @@ module.exports = cds.service.impl(async function (srv) {
     });
 
 
+    this.on('SendToBank2', 'BankBasic', async (req) => {
+        const param = req.data['param123'];
+        console.log('========> param: ', param);
+
+        // 통신서버 연결
+        const commServer = await cds.connect.to('BNB_COMM_API');
+
+        const payload = {
+            TYPE: "WON/KEB",
+            DATA: param
+        };
+        console.log('payload', payload);
+        
+        const result = await commServer.send({
+            method: 'POST',
+            path: '/api/sendData',
+            data: payload,
+            headers: { 'Content-Type': 'application/json' }
+        });
+        
+        // 응답 반환 {"resultCd":"S","resultMsg":"SUCCESS"}
+        console.log('result: ', result);
+        return result;
+    });
+
+
+    this.on('SendToBank3', async (req) => {
+        const i_data = req.data['i_data'];
+        console.log('========> i_data: ', i_data);
+
+        // 통신서버 연결
+        const l_commServer = await cds.connect.to('BNB_COMM_API');
+
+        const l_parameter = {
+            TYPE: "WON/KEB",
+            DATA: i_data
+        };
+        
+        const l_result = await l_commServer.send({
+            method: 'POST',
+            path: '/api/sendData',
+            data: l_parameter,
+            headers: { 'Content-Type': 'application/json' }
+        });
+        
+        return l_result;
+    });
+
+    // 개시 전문 만들기
+    // ZBZf00f_f_1000100
+    // 개시는 전문 헤더만 넣어줌 =
+    // ** docuno 전문 번호 key
+    // 리턴 받을 때, 은행 응답 + 생성한 전문
+
+    // input 회사코드, 은행코드, 업체코드 (50번 테이블 키)
+    // OUTPUT 결과, 전문 헤더
+    
+    // function 모듈 1000100 개시
+    // 원화300 = 헤더 100 + 바디 200
+
+    // ZBZW00SW300 구조체 만들고 output에 넣기
+
+    
+
+    this.on('sccTest', async (req) => {
+        const commServer = await cds.connect.to('BNB_SCC_TEST');
+
+        const result = await commServer.send({
+            method: 'GET',
+            path: '/api/hello'
+        });
+        
+        console.log('result: ', result);
+        return {
+            result
+        };
+    });
+
+
 
     /**
      * 통신 서버에서 요청하는 API

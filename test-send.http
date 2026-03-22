@@ -1,0 +1,13 @@
+### 1. CAP 서버가 정상적으로 떠 있는지 확인 (메타데이터 조회)
+GET http://localhost:42217/odata/v4/propagation/$metadata
+Accept: application/json
+
+
+### 2. 아웃바운드 액션 테스트
+POST http://localhost:42217/odata/v4/propagation/SendToBank3
+Content-Type: application/json
+Accept: application/json
+
+{
+  "p_data": "넘겨주는 파라미터 데이터"
+}

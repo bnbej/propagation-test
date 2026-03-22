@@ -45,6 +45,11 @@ annotate service.BankBasic with @(
             Label : '통신모듈 API'
         },
         {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'PropagationService.SendToBank2',
+            Label : '대표님 전송 테스트'
+        },
+        {
             $Type : 'UI.DataField',
             Value : hbkid,
         },
